@@ -1,0 +1,17 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.box-card {
+  margin: 20px 0;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15) !important;
+  color: #606266;
+}
+
+.el-cascader-menu {
+  height: 300px;
+}
