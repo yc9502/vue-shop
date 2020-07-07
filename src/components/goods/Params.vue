@@ -57,7 +57,6 @@
                 <!--                新建tag的输入框-->
                 <el-input
                   clearable
-                  class="input-new-tag"
                   v-if="scope.row.inputVisible"
                   v-model="scope.row.inputValue"
                   ref="saveTagInput"
@@ -67,11 +66,7 @@
                 >
                 </el-input>
                 <!--                新建tag按钮,触发输入框-->
-                <el-button
-                  v-else
-                  class="button-new-tag"
-                  size="small"
-                  @click="showInput(scope.row)"
+                <el-button v-else size="small" @click="showInput(scope.row)"
                   >+ 新建标签</el-button
                 >
               </template>
@@ -101,7 +96,34 @@
             >添加属性</el-button
           >
           <el-table :data="onlyData" stripe border>
-            <el-table-column type="expand"> </el-table-column>
+            <el-table-column type="expand">
+              <template v-slot="scope">
+                <!--                循环渲染tag标签-->
+                <el-tag
+                  @close="deleteTag(i, scope.row)"
+                  closable
+                  v-for="(item, i) in scope.row.attr_vals"
+                  :key="i"
+                >
+                  {{ item }}
+                </el-tag>
+                <!--                新建tag的输入框-->
+                <el-input
+                  clearable
+                  v-if="scope.row.inputVisible"
+                  v-model="scope.row.inputValue"
+                  ref="saveTagInput"
+                  size="small"
+                  @keyup.enter.native="handleInputConfirm(scope.row)"
+                  @blur="handleInputConfirm(scope.row)"
+                >
+                </el-input>
+                <!--                新建tag按钮,触发输入框-->
+                <el-button v-else size="small" @click="showInput(scope.row)"
+                  >+ 新建标签</el-button
+                >
+              </template>
+            </el-table-column>
             <el-table-column type="index"></el-table-column>
             <el-table-column
               prop="attr_name"

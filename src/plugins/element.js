@@ -32,6 +32,9 @@ import {
   Alert,
   Tabs,
   TabPane,
+  Step,
+  Steps,
+  Upload,
 } from "element-ui";
 //导入弹框提示组件
 
@@ -67,6 +70,9 @@ Vue.use(Cascader);
 Vue.use(Alert);
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(Step);
+Vue.use(Steps);
+Vue.use(Upload);
 
 //把弹框组件挂载到vue实例中
 Vue.prototype.$message = Message;
